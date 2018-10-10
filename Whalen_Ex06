@@ -1,0 +1,40 @@
+rm(list=ls()) #clears global environment
+iris=read.csv(file = "iris.csv", stringsAsFactors = F) #strings as factors loads everything as characters, not as factors
+
+#code to return certain number of lines from beginning of file 
+number=5 #want to return first 5 lines of file, assigning a value of 5 to number
+head(iris, n = number) #returns the first n number of lines from the object iris, and in number = 5
+
+str(iris) #tells info about data structure
+
+#print last 2 rows with last two columns
+iris2=subset(iris, select = c("Petal.Width", "Species")) #subsets the object iris to just the last two columns but with all rows
+tail(iris2, n = 2) #returns the last n number of rows in the last two columns, n = 2
+
+#number of obs for each species
+
+setosa=iris[iris$Species == "setosa", ] #assigns object that has indexed iris into all the rows where the characters in the Species column are "setosa" and all the column values for those rows
+nrow(setosa) #returns the number of rows in the object setosa which is the number of observations
+
+versicolor=iris[iris$Species == "versicolor", ] #assigns object that has indexed iris into all the rows where the characters in the Species column are "versicolor" and all the column values for those rows
+nrow(versicolor) #returns the number of rows in the object versicolor which is the number of observations
+
+virginica=iris[iris$Species == "virginica", ] #assigns object that has indexed iris into all the rows where the characters in the Species column are "virginica" and all the column values for those rows
+nrow(virginica) #returns the number of rows in the object virginica which is the number of observations
+
+#rows with sepal width greater > 3.5
+
+greaterSepalWidth=iris[iris$Sepal.Width>3.5, 1:5] #assigns object that is iris indexed with all the rows where Sepal Width is greater than 3.5 and all the column values for those rows
+
+#setosa.csv
+
+setosa=iris[iris$Species == "setosa", ] #assigns object that has indexed iris into all the rows where the characters in the Species column are "setosa" and all the column values for those rows
+write.csv(setosa, file = "setosa.csv", row.names = FALSE) #writes a csv file of the object setosa 
+# file is named "setosa.csv" and does not include row names
+
+#mean, min, max of petal length for virginica
+
+virginica=iris[iris$Species == "virginica", ] #assigns object that has indexed iris into all the rows where the characters in the Species column are "virginica" and all the column values for those rows
+sum=summary(virginica$Petal.Length) # summarizes information of the column petal length in the object viriginica into an object
+sum[c(1,4,6)] # gives the first, fourth, and sixth values of the object which are the min, mean, and max of petal length
+
