@@ -4,6 +4,8 @@ iris=read.csv(file = "iris.csv", stringsAsFactors = F) #strings as factors loads
 #code to return certain number of lines from beginning of file 
 number=5 #want to return first 5 lines of file, assigning a value of 5 to number
 head(iris, n = number) #returns the first n number of lines from the object iris, and in number = 5
+### Brittni: We wanted you to recreate the functionality of head without using it. I took off 0.25 points, because you did still assign the variables. What we were looking for was something like:
+## iris[1:number,]
 
 str(iris) #tells info about data structure
 
